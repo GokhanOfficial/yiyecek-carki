@@ -1,4 +1,4 @@
-* {
+ow* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -130,7 +130,7 @@ main {
     position: absolute;
     top: -20px;
     left: 50%;
-    transform: translateX(-50%);
+    transform: translateX(-50%) rotate(180deg);
     width: 0;
     height: 0;
     border-left: 20px solid transparent;
