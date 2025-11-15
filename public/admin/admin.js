@@ -9,7 +9,40 @@ class AdminPanel {
     }
     
     init() {
-        this.bindLoginEvents();
+        // Check for saved session
+        const savedPassword = localStorage.getItem('adminPassword');
+        if (savedPassword) {
+            this.adminPassword = savedPassword;
+            this.verifyAndShowPanel();
+        } else {
+            this.bindLoginEvents();
+        }
+    }
+    
+    async verifyAndShowPanel() {
+        try {
+            const response = await fetch('/api/admin/auth', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ password: this.adminPassword })
+            });
+            
+            if (response.ok) {
+                this.showAdminPanel();
+            } else {
+                // Session invalid, clear and show login
+                localStorage.removeItem('adminPassword');
+                this.adminPassword = null;
+                this.bindLoginEvents();
+            }
+        } catch (error) {
+            console.error('Session verification error:', error);
+            localStorage.removeItem('adminPassword');
+            this.adminPassword = null;
+            this.bindLoginEvents();
+        }
     }
     
     bindLoginEvents() {
@@ -35,6 +68,7 @@ class AdminPanel {
             
             if (response.ok) {
                 this.adminPassword = password;
+                localStorage.setItem('adminPassword', password);
                 this.showAdminPanel();
             } else {
                 document.getElementById('loginError').textContent = data.error || 'Hatalı şifre';
@@ -58,6 +92,7 @@ class AdminPanel {
     bindAdminEvents() {
         // Logout
         document.getElementById('logoutButton').addEventListener('click', () => {
+            localStorage.removeItem('adminPassword');
             location.reload();
         });
         

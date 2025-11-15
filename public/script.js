@@ -56,10 +56,16 @@ class WheelGame {
                 this.codeError.textContent = '';
                 this.codeError.classList.remove('show');
                 this.spinButton.disabled = false;
+                this.resultMessage.textContent = '';
                 return true;
             } else {
                 this.showError(data.message);
                 this.spinButton.disabled = true;
+                // Show won prize if code was used
+                if (data.wonPrize) {
+                    this.resultMessage.textContent = `Bu kodla ${data.wonPrize} kazanılmıştı`;
+                    this.resultMessage.classList.remove('celebrate');
+                }
                 return false;
             }
         } catch (error) {
@@ -123,7 +129,7 @@ class WheelGame {
             this.ctx.save();
             this.ctx.rotate(startAngle + (this.segmentAngle * Math.PI) / 360);
             this.ctx.textAlign = 'center';
-            this.ctx.font = 'bold 14px Arial';
+            this.ctx.font = 'bold 10.5px Arial';
             
             const words = segment.name.split(' ');
             const textLines = words.length > 2 ? 

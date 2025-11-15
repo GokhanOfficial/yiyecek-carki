@@ -1,4 +1,4 @@
-ow* {
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -39,9 +39,6 @@ h1 {
 }
 
 main {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 40px;
     animation: fadeIn 1s ease;
 }
 
@@ -318,21 +315,6 @@ main {
 }
 
 /* Responsive Design */
-@media (min-width: 768px) {
-    main {
-        grid-template-columns: 1fr 1fr;
-        align-items: start;
-    }
-    
-    .wheel-section {
-        order: 1;
-    }
-    
-    .history-section {
-        order: 2;
-    }
-}
-
 @media (max-width: 767px) {
     .container {
         padding: 15px;

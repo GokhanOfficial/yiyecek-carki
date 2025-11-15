@@ -125,7 +125,12 @@ app.get('/api/validate-code/:code', async (req, res) => {
     }
 
     if (codeEntry.usedCount >= codeEntry.maxSpins) {
-      return res.json({ valid: false, message: 'Bu kod zaten kullanılmış' });
+      const wonPrize = codeEntry.spins && codeEntry.spins.length > 0 ? codeEntry.spins[0].wonItem : null;
+      return res.json({ 
+        valid: false, 
+        message: 'Bu kod zaten kullanılmış',
+        wonPrize: wonPrize
+      });
     }
 
     res.json({ valid: true, message: 'Kod geçerli' });
