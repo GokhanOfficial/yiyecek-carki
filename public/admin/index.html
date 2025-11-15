@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel - Cadının Çarkı</title>
+    <link rel="stylesheet" href="admin.css">
+</head>
+<body>
+    <div id="loginSection" class="login-container">
+        <div class="login-box">
+            <h1>🔐 Admin Girişi</h1>
+            <form id="loginForm">
+                <input 
+                    type="password" 
+                    id="passwordInput" 
+                    placeholder="Admin şifresi"
+                    required
+                    autocomplete="off"
+                >
+                <button type="submit">Giriş Yap</button>
+                <div id="loginError" class="error-message"></div>
+            </form>
+        </div>
+    </div>
+
+    <div id="adminPanel" class="admin-panel" style="display: none;">
+        <header class="admin-header">
+            <h1>🧙‍♀️ Yiyecek Çarkı - Admin Panel</h1>
+            <button id="logoutButton" class="logout-button">Çıkış</button>
+        </header>
+
+        <div class="tabs">
+            <button class="tab-button active" data-tab="stats">📊 İstatistikler</button>
+            <button class="tab-button" data-tab="foods">🍫 Yiyecekler</button>
+            <button class="tab-button" data-tab="codes">🎟️ Kodlar</button>
+        </div>
+
+        <div class="tab-content">
+            <!-- Statistics Tab -->
+            <div id="statsTab" class="tab-pane active">
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon">🎟️</div>
+                        <div class="stat-value" id="totalCodes">0</div>
+                        <div class="stat-label">Toplam Kod</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">🎯</div>
+                        <div class="stat-value" id="totalSpins">0</div>
+                        <div class="stat-label">Toplam Çevirme</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">🏆</div>
+                        <div class="stat-value" id="mostWon">-</div>
+                        <div class="stat-label">En Çok Kazanan</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">📅</div>
+                        <div class="stat-value" id="last24h">0</div>
+                        <div class="stat-label">Son 24 Saat</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Foods Tab -->
+            <div id="foodsTab" class="tab-pane">
+                <div class="section-header">
+                    <h2>Yiyecek Yönetimi</h2>
+                    <button id="addFoodButton" class="btn-primary">+ Yiyecek Ekle</button>
+                </div>
+
+                <div class="total-weight-info">
+                    <span>Toplam Oran: <strong id="totalWeightDisplay">0%</strong></span>
+                    <span class="weight-warning" id="weightWarning" style="display: none;">⚠️ Toplam oran 100% olmalıdır</span>
+                </div>
+
+                <div id="foodsList" class="foods-list">
+                    <!-- Foods will be loaded here -->
+                </div>
+
+                <button id="saveFoodsButton" class="btn-success btn-large">Değişiklikleri Kaydet</button>
+            </div>
+
+            <!-- Codes Tab -->
+            <div id="codesTab" class="tab-pane">
+                <div class="section-header">
+                    <h2>Kod Yönetimi</h2>
+                    <button id="generateCodeButton" class="btn-primary">+ Yeni Kod Oluştur</button>
+                </div>
+
+                <div id="codesList" class="codes-list">
+                    <!-- Codes will be loaded here -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal for adding/editing food -->
+    <div id="foodModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2 id="foodModalTitle">Yiyecek Ekle</h2>
+            <form id="foodForm">
+                <div class="form-group">
+                    <label>İsim:</label>
+                    <input type="text" id="foodName" required>
+                </div>
+                <div class="form-group">
+                    <label>Oran (%):</label>
+                    <input type="number" id="foodWeight" min="1" max="100" required>
+                </div>
+                <div class="form-group">
+                    <label>Renk:</label>
+                    <input type="color" id="foodColor" required>
+                </div>
+                <div class="modal-buttons">
+                    <button type="submit" class="btn-success">Kaydet</button>
+                    <button type="button" class="btn-secondary" id="cancelFoodButton">İptal</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal for generating code -->
+    <div id="codeModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Yeni Kod Oluştur</h2>
+            <form id="codeForm">
+                <div class="form-group">
+                    <label>Kampanya Adı (opsiyonel):</label>
+                    <input type="text" id="codeName" placeholder="Örn: Sosyal Medya Kampanyası">
+                </div>
+                <div class="modal-buttons">
+                    <button type="submit" class="btn-success">Oluştur</button>
+                    <button type="button" class="btn-secondary" id="cancelCodeButton">İptal</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal for code details -->
+    <div id="codeDetailsModal" class="modal">
+        <div class="modal-content modal-large">
+            <span class="close">&times;</span>
+            <h2>Kod Detayları</h2>
+            <div id="codeDetailsContent">
+                <!-- Code details will be loaded here -->
+            </div>
+        </div>
+    </div>
+
+    <script src="admin.js"></script>
+</body>
+</html>

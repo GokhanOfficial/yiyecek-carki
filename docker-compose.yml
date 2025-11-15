@@ -1,0 +1,24 @@
+version: '3.8'
+
+services:
+  yiyecek-carki:
+    build: .
+    container_name: yiyecek-carki
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=production
+      - PORT=3000
+      - ADMIN_PASSWORD=${ADMIN_PASSWORD:-admin123}
+      - RATE_LIMIT_WINDOW_MS=900000
+      - RATE_LIMIT_MAX_REQUESTS=10
+      - CORS_ORIGINS=*
+    volumes:
+      - ./data:/app/data
+    networks:
+      - yiyecek-carki-network
+
+networks:
+  yiyecek-carki-network:
+    driver: bridge

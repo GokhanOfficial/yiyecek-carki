@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadının Çarkı</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🧙‍♀️ Cadının Çarkı 🎯</h1>
+            <p class="subtitle">Şansını dene, lezzet kazan!</p>
+        </header>
+
+        <main>
+            <section class="wheel-section">
+                <div class="code-input-container">
+                    <label for="codeInput">Çevirme Kodunuz:</label>
+                    <input 
+                        type="text" 
+                        id="codeInput" 
+                        placeholder="12 haneli kodunuzu girin"
+                        maxlength="12"
+                        autocomplete="off"
+                    >
+                    <div id="codeError" class="code-error"></div>
+                </div>
+
+                <div class="wheel-container">
+                    <canvas id="wheelCanvas" width="400" height="400"></canvas>
+                    <div class="wheel-pointer"></div>
+                </div>
+                
+                <button id="spinButton" class="spin-button" disabled>
+                    <span class="button-text">ÇEVİR</span>
+                    <span class="button-spinner">⚡</span>
+                </button>
+
+                <div id="result" class="result-message"></div>
+            </section>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

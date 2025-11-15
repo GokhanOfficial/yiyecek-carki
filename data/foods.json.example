@@ -1,0 +1,42 @@
+{
+  "foods": [
+    {
+      "id": "food_1",
+      "name": "Frambuazlı Biscolata",
+      "weight": 12,
+      "color": "#FF6B9D"
+    },
+    {
+      "id": "food_2",
+      "name": "Haribo",
+      "weight": 12,
+      "color": "#C44569"
+    },
+    {
+      "id": "food_3",
+      "name": "Brownie Intense",
+      "weight": 17,
+      "color": "#F8B195"
+    },
+    {
+      "id": "food_4",
+      "name": "Eti Canga",
+      "weight": 17,
+      "color": "#F67280"
+    },
+    {
+      "id": "food_5",
+      "name": "Eti Wanted Hindistan Cevizli",
+      "weight": 21,
+      "color": "#355C7D"
+    },
+    {
+      "id": "food_6",
+      "name": "Ülker Piko",
+      "weight": 21,
+      "color": "#6C5B7B"
+    }
+  ],
+  "totalWeight": 100,
+  "lastUpdated": "2025-11-15T14:30:00Z"
+}
