@@ -128,14 +128,14 @@ main {
 
 .wheel-pointer {
     position: absolute;
-    bottom: -20px;
+    top: -20px;
     left: 50%;
-    transform: translateX(-50%) rotate(180deg);
+    transform: translateX(-50%);
     width: 0;
     height: 0;
     border-left: 20px solid transparent;
     border-right: 20px solid transparent;
-    border-top: 40px solid #ff6b6b;
+    border-bottom: 40px solid #ff6b6b;
     filter: drop-shadow(0 4px 8px rgba(0,0,0,0.3));
     z-index: 10;
 }

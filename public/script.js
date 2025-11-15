@@ -202,7 +202,7 @@ class WheelGame {
             const winningIndex = this.segments.findIndex(s => s.id === winner.id);
             
             const segmentCenter = winningIndex * this.segmentAngle + this.segmentAngle / 2;
-            const targetRotation = 360 - segmentCenter + 270;
+            const targetRotation = 360 - segmentCenter + 90;
             const spins = 5 + Math.floor(Math.random() * 3);
             const totalRotation = spins * 360 + targetRotation;
             
